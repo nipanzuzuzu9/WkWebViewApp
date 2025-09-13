@@ -17,7 +17,7 @@ jobs:
         run: |
           gem install cocoapods
           pod install --project-directory=WKWebViewLocal
-
+        
       - name: Build IPA
         run: |
           make release
@@ -27,11 +27,3 @@ jobs:
         with:
             name: WkWebViewLocal
             path: WkWebViewLocal.ipa
-
-
-      - name: Install CocoaPods
-        run: |
-          gem install cocoapods
-          pod install --project-directory=WKWebViewLocal
-
-
