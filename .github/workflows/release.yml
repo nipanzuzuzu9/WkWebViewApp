@@ -21,7 +21,7 @@ jobs:
       - name: Install CocoaPods
         run: |
           gem install cocoapods
-          cd WKWebViewLocal && pod install
+          cd WKWebViewLocal/WKWebViewLocal && pod install
         
       - name: Build IPA
         run: |
