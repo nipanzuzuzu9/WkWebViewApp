@@ -1,0 +1,57 @@
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0" />
+    <link href="css/test.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h3>WKWebView</h3>
+    
+    <p><b>Loading local file, assets and css and calling javascript.</b></p>
+    
+    <img src="images/pic.png" width="100">
+        
+    <p>
+    Local files and assets load correctly if baseUrl is set.
+    </p>
+    
+    <p>
+    A ScriptMessageHandler "MyObserver" is added when the WKWebView is configured at start up.
+    The "Call.." button calls the javascript function changeText() in this html file, cahnging the text below.
+    </p>
+    
+    <p>
+    The "Show a Swift alert" link calls showSwiftDialog() which calls the WKScriptMessageHandler delegate method userContentController
+    and brings up a dialog with the passed message text.
+    </p>
+
+    <p id="myText">[Swift]:</p>
+
+    <p>
+    <a href="#" onclick="showSwiftDialog()">Show a Swift alert from Javascript</a>
+    </p>
+
+    <p>
+    <a href="page.html" onclick="goPage()">Another page</a>
+
+    </p>
+
+    <script>
+        // Swift can call this function
+        function changeText(swiftText) {
+            const element = document.getElementById("myText");
+            element.textContent = "Swift: " + swiftText;
+        }
+
+        // Javascript can send the message "ShowAlert" to Swift
+        function showSwiftDialog() {
+            window.webkit.messageHandlers.MyObserver.postMessage("Hello!")
+        }
+
+        function goPage() {
+            window.webkit.messageHandlers.MyObserver.postMessage("goPage")
+        }
+
+    </script>
+    
+</body>
+</html>
