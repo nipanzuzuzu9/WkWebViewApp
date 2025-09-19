@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WebView App</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+<body>
+    <h1>Welcome to the WebView App!</h1>
+    <p>This is a sample HTML page loaded in a WKWebView.</p>
+    <button onclick="schedulePushNotification()">Schedule Push Notification (5 seconds)</button>
+    <button onclick="schedulePushNotificationImmediately()">Push Notification Immediately</button>
+
+    <script>
+        function schedulePushNotification() {
+            // Call the native iOS function to schedule a notification
+            // The message will appear after 5 seconds (approx 0.083 minutes)
+            window.webkit.messageHandlers.pushNotification.postMessage({message: "Hello from JavaScript! This is a delayed notification.", delay: 0.083});
+        }
+
+        function schedulePushNotificationImmediately() {
+            // Call the native iOS function to schedule an immediate notification
+            window.webkit.messageHandlers.pushNotification.postMessage({message: "Immediate notification from JavaScript!", delay: 0});
+        }
+    </script>
+</body>
+</html>
+
+
