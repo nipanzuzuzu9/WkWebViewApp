@@ -20,5 +20,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v4.6.0
         with:
-            name: WkWebViewLocal
-            path: WkWebViewLocal.ipa
+            name: WebViewTemplate
+            path: WebViewTemplate.ipa
